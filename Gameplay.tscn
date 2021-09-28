@@ -1,0 +1,217 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/GameOverMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/GameUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Backgrounds/blue.png" type="Texture" id=5]
+[ext_resource path="res://Gameplay.gd" type="Script" id=6]
+[ext_resource path="res://SpawnSystem.gd" type="Script" id=7]
+[ext_resource path="res://UI/kenvector_future.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "game_over"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("UILayer/CenterLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UILayer/CenterLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "GAME OVER" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UILayer/CenterLabel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 328, 160 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UILayer/CenterContainer:rect_position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 576 ), Vector2( 0, 576 ), Vector2( 0, 248 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("UILayer/CenterContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("UILayer/CenterLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UILayer/CenterLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "READY" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UILayer/CenterLabel:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 324, 152 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UILayer/CenterContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 576.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 288 )
+rotation = -1.57079
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GameUI" parent="UILayer" instance=ExtResource( 4 )]
+
+[node name="CenterLabel" type="Label" parent="UILayer"]
+margin_left = 324.0
+margin_top = 152.0
+margin_right = 708.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 384, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "READY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UILayer"]
+visible = false
+margin_top = 248.0
+margin_right = 1024.0
+margin_bottom = 439.999
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverMenu" parent="UILayer/CenterContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 384.0
+margin_top = 15.0
+margin_right = 640.0
+margin_bottom = 175.0
+
+[node name="SpawnSystem" type="Node2D" parent="."]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SpawnPointsBig" type="Node2D" parent="SpawnSystem"]
+
+[node name="TopLeft" type="Position2D" parent="SpawnSystem/SpawnPointsBig"]
+position = Vector2( -59, -56 )
+
+[node name="TopRight" type="Position2D" parent="SpawnSystem/SpawnPointsBig"]
+position = Vector2( 1086, -53 )
+
+[node name="BottomRight" type="Position2D" parent="SpawnSystem/SpawnPointsBig"]
+position = Vector2( 1088, 640 )
+
+[node name="BottomLeft" type="Position2D" parent="SpawnSystem/SpawnPointsBig"]
+position = Vector2( -59.0001, 640 )
+
+[node name="SpawnTimer" type="Timer" parent="SpawnSystem"]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/game_over = SubResource( 2 )
+anims/intro = SubResource( 3 )
+
+[connection signal="life_lost" from="Player" to="." method="_on_Player_life_lost"]
+[connection signal="timeout" from="SpawnSystem/SpawnTimer" to="SpawnSystem" method="_on_SpawnTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
