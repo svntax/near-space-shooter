@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://HighScoresMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/kenvector_future.ttf" type="DynamicFontData" id=2]
@@ -21,6 +21,10 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=5]
 default_font = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 2 )
 
 [node name="HighScoresMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -91,5 +95,17 @@ margin_bottom = 27.0
 size_flags_horizontal = 3
 text = "12345"
 align = 2
+
+[node name="MessageLabel" type="Label" parent="."]
+visible = false
+margin_top = 256.0
+margin_right = 1024.0
+margin_bottom = 283.0
+custom_fonts/font = SubResource( 6 )
+text = "Error: Failed to get high scores"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

@@ -17,7 +17,7 @@ func _ready():
 	if result is GDScriptFunctionState:
 		result = yield(result, "completed")
 	if result.has("error"):
-		pass # Error handling here
+		$MessageLabel.show()
 	else:
 		var data = result.data
 		var json_data = JSON.parse(data)
