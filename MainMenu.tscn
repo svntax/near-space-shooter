@@ -8,6 +8,7 @@
 [ext_resource path="res://Hazards/SmallAsteroids/SmallAsteroid01.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hazards/SmallAsteroids/SmallAsteroid02.tscn" type="PackedScene" id=7]
 [ext_resource path="res://MainMenu.gd" type="Script" id=8]
+[ext_resource path="res://AsteroidDecorations.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -40,6 +41,7 @@ __meta__ = {
 }
 
 [node name="AsteroidDecorations" type="Node2D" parent="."]
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_lock_": true
 }
