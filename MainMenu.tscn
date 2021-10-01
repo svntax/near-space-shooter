@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/kenvector_future.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Backgrounds/blue.png" type="Texture" id=2]
@@ -17,6 +17,9 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 1 )
 
 [node name="MainMenu" type="Node2D"]
@@ -42,7 +45,7 @@ __meta__ = {
 }
 
 [node name="BigAsteroid01" parent="AsteroidDecorations" instance=ExtResource( 4 )]
-position = Vector2( 128, 504 )
+position = Vector2( 120, 296 )
 use_initial_velocity = true
 initial_velocity = Vector2( 0.2, -0.5 )
 
@@ -135,6 +138,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="LoginButton" type="Button" parent="."]
+margin_left = 48.6765
+margin_top = 40.0
+margin_right = 232.676
+margin_bottom = 104.0
+rect_min_size = Vector2( 128, 64 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 3 )
+text = "Sign in"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerNameLabel" type="Label" parent="."]
+margin_left = 56.0
+margin_top = 120.0
+margin_right = 224.0
+margin_bottom = 184.0
+custom_fonts/font = SubResource( 4 )
+text = "username"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Buttons/HighScoresButton" to="." method="_on_HighScoresButton_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="LoginButton" to="." method="_on_LoginButton_pressed"]
