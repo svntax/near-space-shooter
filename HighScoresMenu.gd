@@ -22,6 +22,19 @@ func _ready():
 		var data = result.data
 		var json_data = JSON.parse(data)
 		var high_scores: Array = json_data.result
+		
+		# Selection sort
+		for i in high_scores.size() - 1:
+			var indexOfLargest = i
+			for j in range(i+1, high_scores.size()):
+				if high_scores[j].value > high_scores[indexOfLargest].value:
+					indexOfLargest = j
+			if indexOfLargest != i:
+				# Swap
+				var temp = high_scores[i]
+				high_scores[i] = high_scores[indexOfLargest]
+				high_scores[indexOfLargest] = temp
+		
 		for score in high_scores:
 			var name_label = player_name_label.duplicate()
 			name_label.set_text(score.username)
