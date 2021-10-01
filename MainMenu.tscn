@@ -77,10 +77,10 @@ __meta__ = {
 }
 
 [node name="Buttons" type="VBoxContainer" parent="."]
-margin_left = 384.0
+margin_left = 360.0
 margin_top = 256.0
-margin_right = 640.0
-margin_bottom = 512.0
+margin_right = 664.0
+margin_bottom = 520.0
 rect_min_size = Vector2( 256, 256 )
 custom_constants/separation = 36
 alignment = 1
@@ -89,9 +89,8 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="Buttons"]
-margin_top = 46.0
-margin_right = 256.0
-margin_bottom = 110.0
+margin_right = 304.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 256, 64 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
@@ -104,10 +103,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HighScoresButton" type="Button" parent="Buttons"]
+margin_top = 100.0
+margin_right = 304.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 256, 64 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = SubResource( 3 )
+text = "High Scores"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ExitButton" type="Button" parent="Buttons"]
-margin_top = 146.0
-margin_right = 256.0
-margin_bottom = 210.0
+margin_top = 200.0
+margin_right = 304.0
+margin_bottom = 264.0
 rect_min_size = Vector2( 256, 64 )
 custom_styles/hover = ExtResource( 3 )
 custom_styles/pressed = ExtResource( 3 )
@@ -121,4 +136,5 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Buttons/HighScoresButton" to="." method="_on_HighScoresButton_pressed"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_ExitButton_pressed"]

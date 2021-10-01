@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://HighScoresMenu.gd" type="Script" id=1]
+[ext_resource path="res://UI/kenvector_future.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Backgrounds/blue.png" type="Texture" id=3]
+[ext_resource path="res://UI/ButtonNormalBlue.tres" type="StyleBox" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[node name="HighScoresMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 576.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="."]
+margin_left = 198.0
+margin_right = 838.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 384, 64 )
+custom_fonts/font = SubResource( 1 )
+text = "High Scores"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 40.0
+margin_top = 480.0
+margin_right = 296.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 256, 64 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = SubResource( 3 )
+text = "Go back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoresGrid" type="GridContainer" parent="."]
+margin_left = 192.0
+margin_top = 108.0
+margin_right = 832.0
+margin_bottom = 450.0
+theme = SubResource( 5 )
+custom_constants/vseparation = 8
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="ScoresGrid"]
+margin_right = 318.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Username 1"
+
+[node name="PlayerScore" type="Label" parent="ScoresGrid"]
+margin_left = 322.0
+margin_right = 640.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "12345"
+align = 2
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
